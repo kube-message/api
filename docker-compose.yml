@@ -1,0 +1,14 @@
+version: "3"
+services:
+  api:
+    image: imauld/api:app-0.1.0
+    ports:
+      - "8080:8080"
+    command: "/venv/bin/python -c api/config.py api.server:app"
+    environment:
+      - "ALERTS_SERVICE_HOST=alerts"
+      - "ALERTS_SERVICE_PORT=8081"
+    links:
+      - messenger
+      - alerts
+      - push
