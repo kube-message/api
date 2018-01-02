@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-proto_dir=~/repos/kube/proto
-app_dir=~/repos/kube/api/api
+proto_dir=$GOPATH/src/github.com/kube-message/proto
+app_dir=$GOPATH/src/github.com/kube-message/api/api
 messenger_python_out_dir=$app_dir/proto/messenger
 alerts_python_out_dir=$app_dir/proto/alerts
-messenger_venv=~/repos/kube/messenger/venv
+messenger_venv=$GOPATH/src/github.com/kube-message/api/venv
 
 $messenger_venv/bin/python \
     -m grpc_tools.protoc \
