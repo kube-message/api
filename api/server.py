@@ -2,7 +2,7 @@ from wsgiref import simple_server
 
 import falcon
 
-import api
+from . import handlers
 from .middleware import ResponseLoggerMiddleware
 
 
@@ -11,21 +11,21 @@ app = falcon.API(middleware=[ResponseLoggerMiddleware()])
 """
 Messages URL"s
 """
-app.add_route("/messages", api.MessageListResource())
-app.add_route("/messages/{message_id}", api.MessageDetailResource())
+# app.add_route("/messages", handlers.MessageListResource())
+# app.add_route("/messages/{message_id}", handlers.MessageDetailResource())
 
 """
 Thread URL"s
 """
-app.add_route("/threads", api.ThreadListResource())
-app.add_route("/threads/{thread_id:int}", api.ThreadDetailResource())
-app.add_route("/threads/users/{user_id:int}", api.ThreadUserListResource())
-app.add_route("/threads/{thread_id:int}/messages", api.ThreadMessageListResource())
+app.add_route("/threads", handlers.ThreadListResource())
+# app.add_route("/threads/{thread_id:int}", handlers.ThreadDetailResource())
+# app.add_route("/threads/users/{user_id:int}", handlers.ThreadUserListResource())
+app.add_route("/threads/{thread_id:int}/messages", handlers.ThreadMessageListResource())
 
 """
 Health Check
 """
-app.add_route("/shc", api.HealthCheckResource())
+app.add_route("/shc", handlers.HealthCheckResource())
 
 
 if __name__ == "__main__":

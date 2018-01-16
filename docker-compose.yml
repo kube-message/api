@@ -4,11 +4,29 @@ services:
     image: imauld/api:app-0.1.0
     ports:
       - "8080:8080"
-    command: "/venv/bin/python -c api/config.py api.server:app"
+    command: "/venv/bin/gunicorn -c /api/config.py api.server:app"
     environment:
       - "ALERTS_SERVICE_HOST=alerts"
       - "ALERTS_SERVICE_PORT=8081"
     links:
       - messenger
-      - alerts
-      - push
+      # - alerts
+      # - push
+  messenger:
+    image: imauld/messenger:app-0.2.0
+    ports:
+      - "8081:8081"
+    command: "/venv/bin/python app/server.py"
+    environment:
+      - "ALERTS_SERVICE_HOST=alerts"
+      - "ALERTS_SERVICE_PORT=8081"
+    links:
+      - msgpostgres
+  msgpostgres:
+    image: imauld/msgpostgres:0.1.0
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+volumes:
+  db-data:
