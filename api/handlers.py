@@ -1,7 +1,7 @@
 import falcon
 import json
 
-from .services import messenger
+from .services import alerts, messenger
 from . import serializers
 from .utils import get_logger
 
@@ -45,7 +45,7 @@ class ThreadListResource(object):
             return
         thread, error = messenger.create_thread(participants)
         if not error:
-            response.data = json.dumps({"thread_id": thread.id, "participants": list(thread.participants)}).encode()
+            response.data = serializers.thread_proto_to_json(thread)
             response.status = falcon.HTTP_202
         else:
             response.data = json.dumps({"error": error.error_code})
@@ -61,65 +61,41 @@ class ThreadMessageListResource(object):
         ).encode()
         response.status = falcon.HTTP_200
 
-    # @staticmethod
-    # def on_post(request, response, thread_id):
-    #     data = get_data_from_request(request)
-    #     try:
-    #         sender_id, text = data["sender_id"], data["text"]
-    #     except KeyError as err:
-    #         response.status = falcon.HTTP_400
-    #         response.data = json.dumps({"error": "error sending message: %s" % err})
-    #         return
+    @staticmethod
+    def on_post(request, response, thread_id):
+        data = get_data_from_request(request)
+        try:
+            sender_id, text = data["sender_id"], data["text"]
+        except KeyError as err:
+            response.status = falcon.HTTP_400
+            response.data = json.dumps({"error": "error sending message: %s" % err})
+            return
 
-    #     if threads.is_user_in_thread(sender_id, thread_id):
-    #         message = messages.send_message(thread_id, sender_id, text)
-    #         response.status = falcon.HTTP_201
-    #         serializer = ModelSerializer(message, ['text', 'thread_id'])
-    #         alerts.send_alerts_for_thread_participants(thread_id)
-    #         response.data = json.dumps(serializer.build_response())
-    #     else:
-    #         response.status = falcon.HTTP_400
-    #         response.data = json.dumps({"error": "error sending message: sender not in thread"})
-    #         return
-
-
-# class ThreadDetailResource(object):
-#     @staticmethod
-#     def on_get(request, response, thread_id):
-#         thread = threads.get_thread_by_id(thread_id)
-#         response.data = json.dumps(ModelSerializer(thread, ["participants"]).build_response())
-#         response.status = falcon.HTTP_200
+        if messenger.is_user_in_thread(sender_id, thread_id):
+            message = messenger.send_message(thread_id, sender_id, text)
+            response.status = falcon.HTTP_201
+            alerts.send_alerts_for_thread_participants(thread_id)
+            response.data = serializers.message_proto_to_json(message)
+        else:
+            response.status = falcon.HTTP_400
+            response.data = json.dumps({"error": "error sending message: sender not in thread"})
+            return
 
 
-# class ThreadUserListResource(object):
-#     @staticmethod
-#     def on_get(request, response, user_id):
-#         user_threads = threads.get_threads_for_user(user_id)
-#         response.data = json.dumps([ModelSerializer(t, ["pk", "particiapnts"]).build_response() for t in user_threads])
-#         response.status = falcon.HTTP_200
+class ThreadDetailResource(object):
+    @staticmethod
+    def on_get(request, response, thread_id):
+        thread = messenger.get_thread_detail(thread_id)
+        response.data = serializers.thread_proto_to_json(thread)
+        response.status = falcon.HTTP_200
 
 
-# class MessageListResource(object):
-#     @staticmethod
-#     def on_post(request, response):
-#         data = get_data_from_request(request)
-#         try:
-#             thread_id, sender_id, text = data["thread_id"], data["sender_id"], data["text"]
-#         except KeyError as err:
-#             response.status = falcon.HTTP_400
-#             response.data = json.dumps({"error": "error sending message: %s" % err})
-#             return
-
-#         if threads.is_user_in_thread(sender_id, thread_id):
-#             message = messages.send_message(thread_id, sender_id, text)
-#             response.status = falcon.HTTP_201
-#             serializer = ModelSerializer(message, ['text', 'thread_id'])
-#             alerts.send_alerts_for_thread_participants(thread_id)
-#             response.data = json.dumps(serializer.build_response())
-#         else:
-#             response.status = falcon.HTTP_400
-#             response.data = json.dumps({"error": "error sending message: sender not in thread"})
-#             return
+class ThreadUserListResource(object):
+    @staticmethod
+    def on_get(request, response, user_id):
+        threads = messenger.get_threads_for_user(user_id)
+        response.data = json.dumps([serializers.thread_proto_to_json(thread) for thread in threads]).encode()
+        response.status = falcon.HTTP_200
 
 
 # class MessageDetailResource(object):
@@ -135,7 +111,7 @@ class ThreadMessageListResource(object):
 #         Returns:
 #             falcon.Response
 #         """
-#         message = messages.get_message_by_id(message_id)
+#         message = messenger.get_message_by_id(message_id)
 #         if message is None:
 #             response.status = falcon.HTTP_404
 #         else:

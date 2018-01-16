@@ -1,0 +1,2 @@
+def send_alerts_for_thread_participants(participants):
+	pass

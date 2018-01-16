@@ -15,5 +15,5 @@ def message_proto_to_json(proto):
 def thread_proto_to_json(proto):
     return json.dumps({
         "id": proto.id,
-        "participants": proto.participants
+        "participants": list(proto.participants)
     }).encode()

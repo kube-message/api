@@ -11,15 +11,14 @@ app = falcon.API(middleware=[ResponseLoggerMiddleware()])
 """
 Messages URL"s
 """
-# app.add_route("/messages", handlers.MessageListResource())
 # app.add_route("/messages/{message_id}", handlers.MessageDetailResource())
 
 """
 Thread URL"s
 """
 app.add_route("/threads", handlers.ThreadListResource())
-# app.add_route("/threads/{thread_id:int}", handlers.ThreadDetailResource())
-# app.add_route("/threads/users/{user_id:int}", handlers.ThreadUserListResource())
+app.add_route("/threads/{thread_id:int}", handlers.ThreadDetailResource())
+app.add_route("/threads/users/{user_id:int}", handlers.ThreadUserListResource())
 app.add_route("/threads/{thread_id:int}/messages", handlers.ThreadMessageListResource())
 
 """
