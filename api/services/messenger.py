@@ -3,6 +3,7 @@ from collections import namedtuple
 import grpc
 
 from ..proto import messenger
+from .shared import get_metadata
 from ..utils import get_logger
 
 
@@ -21,10 +22,6 @@ e_points = [
 ]
 Endpoints = namedtuple("Endpoints", e_points)
 endpoints = Endpoints(*e_points)
-
-
-def get_metadata(endpoint):
-    return [("caller", "messenger-cli"), ("endpoint", endpoint)]
 
 
 def create_thread(participants):

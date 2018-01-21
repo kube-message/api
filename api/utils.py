@@ -1,3 +1,4 @@
+from datetime import datetime
 import logging
 import sys
 
@@ -22,3 +23,9 @@ def get_log_message_from_grpc_metadata(md):
     caller = data["caller"]
     template = "endpoint: %s user-agent: %s response_code: [200] caller: %s"
     return template % (endpoint, user_agent, caller)
+
+
+def get_timestamp(dt=None):
+    if dt is None:
+        dt = datetime.utcnow()
+    return dt.timestamp()
