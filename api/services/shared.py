@@ -1,2 +1,2 @@
 def get_metadata(endpoint):
-    return [("caller", "messenger-cli"), ("endpoint", endpoint)]
+    return [("caller", "api-service"), ("endpoint", endpoint)]

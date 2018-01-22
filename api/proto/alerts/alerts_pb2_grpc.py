@@ -14,18 +14,18 @@ class AlertsStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.GetAlertsForUser = channel.unary_unary(
-        '/alerts.Alerts/GetAlertsForUser',
+    self.get_alerts_for_user = channel.unary_unary(
+        '/alerts.Alerts/get_alerts_for_user',
         request_serializer=alerts__pb2.GetAlertsForUserRequest.SerializeToString,
         response_deserializer=alerts__pb2.GetAlertsForUserResponse.FromString,
         )
-    self.MarkAlertSeen = channel.unary_unary(
-        '/alerts.Alerts/MarkAlertSeen',
+    self.mark_alert_seen = channel.unary_unary(
+        '/alerts.Alerts/mark_alert_seen',
         request_serializer=alerts__pb2.MarkAlertSeenRequest.SerializeToString,
         response_deserializer=alerts__pb2.MarkAlertSeenResponse.FromString,
         )
-    self.SendAlert = channel.unary_unary(
-        '/alerts.Alerts/SendAlert',
+    self.send_alert = channel.unary_unary(
+        '/alerts.Alerts/send_alert',
         request_serializer=alerts__pb2.SendAlertRequest.SerializeToString,
         response_deserializer=alerts__pb2.SendAlertResponse.FromString,
         )
@@ -35,21 +35,21 @@ class AlertsServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
-  def GetAlertsForUser(self, request, context):
+  def get_alerts_for_user(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def MarkAlertSeen(self, request, context):
+  def mark_alert_seen(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SendAlert(self, request, context):
+  def send_alert(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -59,18 +59,18 @@ class AlertsServicer(object):
 
 def add_AlertsServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'GetAlertsForUser': grpc.unary_unary_rpc_method_handler(
-          servicer.GetAlertsForUser,
+      'get_alerts_for_user': grpc.unary_unary_rpc_method_handler(
+          servicer.get_alerts_for_user,
           request_deserializer=alerts__pb2.GetAlertsForUserRequest.FromString,
           response_serializer=alerts__pb2.GetAlertsForUserResponse.SerializeToString,
       ),
-      'MarkAlertSeen': grpc.unary_unary_rpc_method_handler(
-          servicer.MarkAlertSeen,
+      'mark_alert_seen': grpc.unary_unary_rpc_method_handler(
+          servicer.mark_alert_seen,
           request_deserializer=alerts__pb2.MarkAlertSeenRequest.FromString,
           response_serializer=alerts__pb2.MarkAlertSeenResponse.SerializeToString,
       ),
-      'SendAlert': grpc.unary_unary_rpc_method_handler(
-          servicer.SendAlert,
+      'send_alert': grpc.unary_unary_rpc_method_handler(
+          servicer.send_alert,
           request_deserializer=alerts__pb2.SendAlertRequest.FromString,
           response_serializer=alerts__pb2.SendAlertResponse.SerializeToString,
       ),

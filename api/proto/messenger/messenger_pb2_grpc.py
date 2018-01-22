@@ -39,6 +39,11 @@ class MessengerStub(object):
         request_serializer=messenger__pb2.GetThreadsForUserRequest.SerializeToString,
         response_deserializer=messenger__pb2.GetThreadsForUserResponse.FromString,
         )
+    self.get_message_detail = channel.unary_unary(
+        '/messenger.Messenger/get_message_detail',
+        request_serializer=messenger__pb2.GetMessageDetailRequest.SerializeToString,
+        response_deserializer=messenger__pb2.GetMessageDetailResponse.FromString,
+        )
 
 
 class MessengerServicer(object):
@@ -80,6 +85,13 @@ class MessengerServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def get_message_detail(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_MessengerServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -107,6 +119,11 @@ def add_MessengerServicer_to_server(servicer, server):
           servicer.get_threads_for_user,
           request_deserializer=messenger__pb2.GetThreadsForUserRequest.FromString,
           response_serializer=messenger__pb2.GetThreadsForUserResponse.SerializeToString,
+      ),
+      'get_message_detail': grpc.unary_unary_rpc_method_handler(
+          servicer.get_message_detail,
+          request_deserializer=messenger__pb2.GetMessageDetailRequest.FromString,
+          response_serializer=messenger__pb2.GetMessageDetailResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

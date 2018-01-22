@@ -29,5 +29,5 @@ class ThreadMessageListResource(object):
 
         message = messenger.send_message(thread_id, sender_id, text)
         response.status = falcon.HTTP_201
-        await alerts.send_alerts_for_thread_participants(thread_id)
+        alerts.send_alerts_for_thread_participants(thread_id, thread_id)
         response.data = serializers.message_proto_to_json(message)

@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='messenger.proto',
   package='messenger',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fmessenger.proto\x12\tmessenger\"T\n\x0eMessengerError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x31\n\nerror_code\x18\x02 \x01(\x0e\x32\x1d.messenger.MessengerErrorCode\"I\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tthread_id\x18\x02 \x01(\x04\x12\x11\n\tsender_id\x18\x03 \x01(\x04\x12\x0c\n\x04text\x18\x04 \x01(\t\"*\n\x06Thread\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x14\n\x0cparticipants\x18\x02 \x03(\x04\"+\n\x13\x43reateThreadRequest\x12\x14\n\x0cparticipants\x18\x01 \x03(\x04\"c\n\x14\x43reateThreadResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"9\n\x12SendMessageRequest\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\"d\n\x13SendMessageResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"+\n\x16GetThreadDetailRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"f\n\x17GetThreadDetailResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x18GetThreadMessagesRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"A\n\x19GetThreadMessagesResponse\x12$\n\x08messages\x18\x01 \x03(\x0b\x32\x12.messenger.Message\"+\n\x18GetThreadsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x04\"i\n\x19GetThreadsForUserResponse\x12\"\n\x07threads\x18\x01 \x03(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError*F\n\x12MessengerErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xd9\x03\n\tMessenger\x12R\n\rcreate_thread\x12\x1e.messenger.CreateThreadRequest\x1a\x1f.messenger.CreateThreadResponse\"\x00\x12O\n\x0csend_message\x12\x1d.messenger.SendMessageRequest\x1a\x1e.messenger.SendMessageResponse\"\x00\x12^\n\x11get_thread_detail\x12#.messenger.GetThreadMessagesRequest\x1a\".messenger.GetThreadDetailResponse\"\x00\x12\x62\n\x13get_thread_messages\x12#.messenger.GetThreadMessagesRequest\x1a$.messenger.GetThreadMessagesResponse\"\x00\x12\x63\n\x14get_threads_for_user\x12#.messenger.GetThreadsForUserRequest\x1a$.messenger.GetThreadsForUserResponse\"\x00\x42\x1a\n\x18io.kubemessage.messengerb\x06proto3')
+  serialized_pb=_b('\n\x0fmessenger.proto\x12\tmessenger\"T\n\x0eMessengerError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x31\n\nerror_code\x18\x02 \x01(\x0e\x32\x1d.messenger.MessengerErrorCode\"I\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tthread_id\x18\x02 \x01(\x04\x12\x11\n\tsender_id\x18\x03 \x01(\x04\x12\x0c\n\x04text\x18\x04 \x01(\t\"*\n\x06Thread\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x14\n\x0cparticipants\x18\x02 \x03(\x04\"+\n\x13\x43reateThreadRequest\x12\x14\n\x0cparticipants\x18\x01 \x03(\x04\"c\n\x14\x43reateThreadResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"9\n\x12SendMessageRequest\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\"d\n\x13SendMessageResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"+\n\x16GetThreadDetailRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"f\n\x17GetThreadDetailResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x18GetThreadMessagesRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"A\n\x19GetThreadMessagesResponse\x12$\n\x08messages\x18\x01 \x03(\x0b\x32\x12.messenger.Message\"+\n\x18GetThreadsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x04\"i\n\x19GetThreadsForUserResponse\x12\"\n\x07threads\x18\x01 \x03(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x17GetMessageDetailRequest\x12\x12\n\nmessage_id\x18\x01 \x01(\x04\"i\n\x18GetMessageDetailResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError*F\n\x12MessengerErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xba\x04\n\tMessenger\x12R\n\rcreate_thread\x12\x1e.messenger.CreateThreadRequest\x1a\x1f.messenger.CreateThreadResponse\"\x00\x12O\n\x0csend_message\x12\x1d.messenger.SendMessageRequest\x1a\x1e.messenger.SendMessageResponse\"\x00\x12^\n\x11get_thread_detail\x12#.messenger.GetThreadMessagesRequest\x1a\".messenger.GetThreadDetailResponse\"\x00\x12\x62\n\x13get_thread_messages\x12#.messenger.GetThreadMessagesRequest\x1a$.messenger.GetThreadMessagesResponse\"\x00\x12\x63\n\x14get_threads_for_user\x12#.messenger.GetThreadsForUserRequest\x1a$.messenger.GetThreadsForUserResponse\"\x00\x12_\n\x12get_message_detail\x12\".messenger.GetMessageDetailRequest\x1a#.messenger.GetMessageDetailResponse\"\x00\x62\x06proto3')
 )
 
 _MESSENGERERRORCODE = _descriptor.EnumDescriptor(
@@ -44,8 +44,8 @@ _MESSENGERERRORCODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=957,
-  serialized_end=1027,
+  serialized_start=1111,
+  serialized_end=1181,
 )
 _sym_db.RegisterEnumDescriptor(_MESSENGERERRORCODE)
 
@@ -521,6 +521,75 @@ _GETTHREADSFORUSERRESPONSE = _descriptor.Descriptor(
   serialized_end=955,
 )
 
+
+_GETMESSAGEDETAILREQUEST = _descriptor.Descriptor(
+  name='GetMessageDetailRequest',
+  full_name='messenger.GetMessageDetailRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message_id', full_name='messenger.GetMessageDetailRequest.message_id', index=0,
+      number=1, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=957,
+  serialized_end=1002,
+)
+
+
+_GETMESSAGEDETAILRESPONSE = _descriptor.Descriptor(
+  name='GetMessageDetailResponse',
+  full_name='messenger.GetMessageDetailResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='messenger.GetMessageDetailResponse.message', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='messenger.GetMessageDetailResponse.error', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1004,
+  serialized_end=1109,
+)
+
 _MESSENGERERROR.fields_by_name['error_code'].enum_type = _MESSENGERERRORCODE
 _CREATETHREADRESPONSE.fields_by_name['thread'].message_type = _THREAD
 _CREATETHREADRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
@@ -532,6 +601,8 @@ _GETTHREADDETAILRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
 _GETTHREADMESSAGESRESPONSE.fields_by_name['messages'].message_type = _MESSAGE
 _GETTHREADSFORUSERRESPONSE.fields_by_name['threads'].message_type = _THREAD
 _GETTHREADSFORUSERRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
+_GETMESSAGEDETAILRESPONSE.fields_by_name['message'].message_type = _MESSAGE
+_GETMESSAGEDETAILRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
 DESCRIPTOR.message_types_by_name['MessengerError'] = _MESSENGERERROR
 DESCRIPTOR.message_types_by_name['Message'] = _MESSAGE
 DESCRIPTOR.message_types_by_name['Thread'] = _THREAD
@@ -545,6 +616,8 @@ DESCRIPTOR.message_types_by_name['GetThreadMessagesRequest'] = _GETTHREADMESSAGE
 DESCRIPTOR.message_types_by_name['GetThreadMessagesResponse'] = _GETTHREADMESSAGESRESPONSE
 DESCRIPTOR.message_types_by_name['GetThreadsForUserRequest'] = _GETTHREADSFORUSERREQUEST
 DESCRIPTOR.message_types_by_name['GetThreadsForUserResponse'] = _GETTHREADSFORUSERRESPONSE
+DESCRIPTOR.message_types_by_name['GetMessageDetailRequest'] = _GETMESSAGEDETAILREQUEST
+DESCRIPTOR.message_types_by_name['GetMessageDetailResponse'] = _GETMESSAGEDETAILRESPONSE
 DESCRIPTOR.enum_types_by_name['MessengerErrorCode'] = _MESSENGERERRORCODE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -639,9 +712,21 @@ GetThreadsForUserResponse = _reflection.GeneratedProtocolMessageType('GetThreads
   ))
 _sym_db.RegisterMessage(GetThreadsForUserResponse)
 
+GetMessageDetailRequest = _reflection.GeneratedProtocolMessageType('GetMessageDetailRequest', (_message.Message,), dict(
+  DESCRIPTOR = _GETMESSAGEDETAILREQUEST,
+  __module__ = 'messenger_pb2'
+  # @@protoc_insertion_point(class_scope:messenger.GetMessageDetailRequest)
+  ))
+_sym_db.RegisterMessage(GetMessageDetailRequest)
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\030io.kubemessage.messenger'))
+GetMessageDetailResponse = _reflection.GeneratedProtocolMessageType('GetMessageDetailResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETMESSAGEDETAILRESPONSE,
+  __module__ = 'messenger_pb2'
+  # @@protoc_insertion_point(class_scope:messenger.GetMessageDetailResponse)
+  ))
+_sym_db.RegisterMessage(GetMessageDetailResponse)
+
+
 
 _MESSENGER = _descriptor.ServiceDescriptor(
   name='Messenger',
@@ -649,8 +734,8 @@ _MESSENGER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=1030,
-  serialized_end=1503,
+  serialized_start=1184,
+  serialized_end=1754,
   methods=[
   _descriptor.MethodDescriptor(
     name='create_thread',
@@ -695,6 +780,15 @@ _MESSENGER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETTHREADSFORUSERREQUEST,
     output_type=_GETTHREADSFORUSERRESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='get_message_detail',
+    full_name='messenger.Messenger.get_message_detail',
+    index=5,
+    containing_service=None,
+    input_type=_GETMESSAGEDETAILREQUEST,
+    output_type=_GETMESSAGEDETAILRESPONSE,
     options=None,
   ),
 ])

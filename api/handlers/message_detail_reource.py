@@ -12,7 +12,8 @@ class MessageDetailResource(object):
     @staticmethod
     def on_get(request, response, message_id):
         """
-        Handle GET requests for message objects.
+        Gets a single message by ID.
+
         Args:
             request: Falcon request object
             response: Falcon response object
@@ -21,8 +22,9 @@ class MessageDetailResource(object):
         Returns:
             falcon.Response
         """
-        message = messenger.get_message_by_id(message_id)
+        message = messenger.get_message_detail(message_id)
         if message is None:
             response.status = falcon.HTTP_404
         else:
-            pass
+            response.status = falcon.HTTP_200
+            response.data = serializers.message_proto_to_json(message)

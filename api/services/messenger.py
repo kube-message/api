@@ -19,6 +19,7 @@ e_points = [
     "get_thread_messages",
     "create_thread",
     "get_thread_detail",
+    "get_message_detail",
 ]
 Endpoints = namedtuple("Endpoints", e_points)
 endpoints = Endpoints(*e_points)
@@ -61,3 +62,9 @@ def get_threads_for_user(user_id):
     request = messenger.GetThreadsForUserRequest(user_id=user_id)
     response = client.get_threads_for_user(request, metadata=get_metadata(endpoints.get_threads_for_user))
     return response.threads
+
+
+def get_message_detail(message_id):
+    request = messenger.GetMessageDetailRequest(message_id=message_id)
+    response = client.get_message_detail(request, metadata=get_metadata(endpoints.get_message_detail))
+    return response.message

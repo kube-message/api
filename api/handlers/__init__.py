@@ -1,3 +1,4 @@
+from .alerts_resource import AlertsResource
 from .health_check import HealthCheckResource
 from .message_detail_reource import MessageDetailResource
 from .thread_detail_resourece import ThreadDetailResource

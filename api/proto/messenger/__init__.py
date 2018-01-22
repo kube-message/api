@@ -12,6 +12,8 @@ from .messenger_pb2 import (
     GetThreadMessagesResponse,
     GetThreadsForUserRequest,
     GetThreadsForUserResponse,
+    GetMessageDetailRequest,
+    GetThreadDetailResponse,
     NOT_FOUND,
     SERVER_ERROR,
     BAD_REQUEST,

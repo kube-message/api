@@ -43,11 +43,11 @@ def mark_alert_seen(user_id, uniq):
 
 def send_alert(alert):
     request = alerts.SendAlertRequest(alert=alert)
-    response = client.SendAlert(request, metadata=get_metadata(endpoints.send_alert))
+    response = client.send_alert(request, metadata=get_metadata(endpoints.send_alert))
     return response.error
 
 
-async def send_alerts_for_thread_participants(participants, thread_id):
+def send_alerts_for_thread_participants(participants, thread_id):
     for participant in participants:
         alert = alerts.Alert(
             recipient_id=participant,
